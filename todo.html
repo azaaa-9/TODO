@@ -11,4 +11,76 @@
 </style> 
 </head>
 <body> 
-     <div class="board"> <div class="column" id="todo"> <h3>To Do</h3> <div class="tasks"></div> <div class="add-task"> <button onclick="addTask('todo')">Add task</button> </div> </div> <div class="column" id="in-progress"> <h3>In Progress</h3> <div class="tasks"></div> <div class="add-task"> <button onclick="addTask('in-progress')">Add task</button> </div> </div> <div class="column" id="done"> <h3>Done</h3> <div class="tasks"></div> <div class="add-task"> <button onclick="addTask('done')">Add task</button> </div> </div> <div class="column" id="blocked"> <h3>Blocked</h3> <div class="tasks"></div> <div class="add-task"> <button onclick="addTask('blocked')">Add task</button> </div> </div> </div> <script> // Function to add a task function addTask(columnId) { const column = document.getElementById(columnId).querySelector('.tasks'); const task = document.createElement('div'); task.className = 'task'; task.innerText = '[Task] - Edit or delete here'; task.draggable = true; // Add delete button const deleteButton = document.createElement('button'); deleteButton.innerText = '🗑️'; deleteButton.onclick = () => task.remove(); task.appendChild(deleteButton); // Append the task to the column column.appendChild(task); } // Make tasks draggable (optional) document.querySelectorAll('.task').forEach(task => { task.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', task.id); }); }); document.querySelectorAll('.tasks').forEach(column => { column.addEventListener('dragover', e => { e.preventDefault(); }); column.addEventListener('drop', e => { const taskId = e.dataTransfer.getData('text'); const task = document.getElementById(taskId); column.appendChild(task); }); }); </script> </body> </html>
+     <div class="board"> 
+          <div class="column" id="todo"> 
+               <h3>To Do</h3> 
+               <div class="tasks">
+
+               </div> 
+               <div class="add-task"> 
+                    <button onclick="addTask('todo')">Add task</button>
+                </div>
+                </div> 
+
+                <div class="column" id="in-progress">
+                     <h3>In Progress</h3>
+                      <div class="tasks">
+
+                      </div> 
+                      <div class="add-task">
+                          <button onclick="addTask('in-progress')">Add task</button>
+                          </div> 
+                         </div> 
+                         
+                         <div class="column" id="done">
+                               <h3>Done</h3> 
+                               <div class="tasks">
+
+                               </div> 
+                               
+                               <div class="add-task">
+                                    <button onclick="addTask('done')">Add task</button>
+                                    </div> 
+                                   </div>
+                                   
+                                   
+                                   <div class="column" id="blocked">
+                                         <h3>Blocked</h3>
+                                          <div class="tasks">
+
+                                          </div>
+                                          
+                                          <div class="add-task">
+                                              <button onclick="addTask('blocked')">Add task</button>
+                                             </div> 
+                                        </div>
+                                    </div>
+                                     <script> 
+                                     Function to add a task 
+                                     function addTask(columnId)
+                                     { const column = document.getElementById(columnId).querySelector('.tasks'); 
+                                     const task = document.createElement('div'); task.className = 'task';
+                                      task.innerText = '[Task] - Edit or delete here'; 
+                                      task.draggable = true; 
+                                      Add delete button const deleteButton = document.createElement('button');
+                                       deleteButton.innerText = '🗑️'; 
+                                       deleteButton.onclick = () => task.remove();
+                                        task.appendChild(deleteButton); 
+                                        Append the task to the column column.appendChild(task);
+                                         }
+                                          Make tasks draggable (optional) document.querySelectorAll('.task').forEach(task => { task.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', task.id);
+
+                                           });
+                                            });
+                                            
+                                            document.querySelectorAll('.tasks').forEach(column => { column.addEventListener('dragover', e => { e.preventDefault(); });
+                                             column.addEventListener('drop', e => { const taskId = e.dataTransfer.getData('text'); const task = document.getElementById(taskId); column.appendChild(task);
+
+                                              });
+                                              });
+                                              
+                                              </script> 
+                                              
+                                             </body>
+                                             
+                                             </html>
